@@ -1,0 +1,14 @@
+v1:
+	simple to do list
+v2:
+	timestamps and countdown timer added
+v3:
+	use of postgres db for data persistence and to use it across browsers
+v4:
+	data persistence without using any external database
+	data persistence across restarts and system reboots
+v5:
+	chrome extension of v4
+v6:
+	firefox extension of v5
+

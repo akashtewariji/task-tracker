@@ -1,0 +1,27 @@
+/* Add styles for timestamp and countdown */
+.timestamp, .deadline, .countdown {
+  font-size: 0.9em;
+  color: #555;
+}
+
+.countdown {
+  font-weight: bold;
+  color: #d32f2f;
+}
+
+.deadline {
+  color: #1976d2;
+}
+
+button {
+  background-color: #e57373;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ef5350;
+}

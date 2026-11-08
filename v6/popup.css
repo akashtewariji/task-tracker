@@ -1,0 +1,517 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f7fc;
+  margin: 0;
+  width: 300px; /* Popup width */
+  min-height: auto;
+}
+
+.container {
+  width: 100%;
+  text-align: center;
+  background-color: #fff;
+  padding: 12px 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.15rem;
+  text-align: left;
+}
+
+.pending-counter {
+  font-size: 0.805rem;
+  color: #333;
+  margin: 0;
+  font-weight: normal;
+}
+
+.input-container {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task-input-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.task-input-row input[type="text"] {
+  flex: 1;
+}
+
+.priority-selector {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.priority-btn {
+  background: transparent;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  padding: 2px 4px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.priority-btn.active {
+  border-color: #333;
+  background-color: #f0f0f0;
+}
+
+.priority-btn:hover {
+  opacity: 0.8;
+}
+
+.datetime-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.date-time-inputs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.date-input-wrapper {
+  flex: 2;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.date-input-wrapper input[type="text"] {
+  flex: 1;
+  padding-right: 30px;
+}
+
+.calendar-btn {
+  position: absolute;
+  right: 5px;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 2px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-btn:hover {
+  opacity: 0.7;
+}
+
+.date-time-inputs input[type="time"] {
+  flex: 1;
+}
+
+input[type="text"], input[type="datetime-local"], input[type="time"] {
+  padding: 7px;
+  font-size: 0.85rem;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.checkmark {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #4CAF50;
+  font-size: 1.2rem;
+  font-weight: bold;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.date-display {
+  margin-top: 4px;
+  font-size: 0.75rem;
+  color: #4CAF50;
+  font-weight: 500;
+  text-align: left;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.priority-filter {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  margin-left: auto;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  padding: 2px 4px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-btn.active {
+  border-color: #333;
+  background-color: #f0f0f0;
+}
+
+.filter-btn:hover {
+  opacity: 0.8;
+}
+
+button#addTaskBtn {
+  padding: 7px 15px;
+  font-size: 0.85rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  flex: 1;
+}
+
+button#addTaskBtn:hover {
+  background-color: #45a049;
+}
+
+button#historyBtn {
+  padding: 7px 12px;
+  font-size: 0.75rem;
+  background-color: #666;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+button#historyBtn:hover {
+  background-color: #555;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin: 4px 0;
+  border-radius: 5px;
+  text-align: left;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.task-view {
+  flex: 1;
+}
+
+.task-header {
+  margin-bottom: 3px;
+}
+
+.task-name-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.task-priority-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.task-name {
+  font-weight: bold;
+  font-size: 0.9rem;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+
+.task-info {
+  font-size: 0.75rem;
+  color: #666;
+  margin-bottom: 3px;
+}
+
+.task-info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  margin: 2px 0;
+}
+
+.task-info-row span {
+  flex: 1;
+}
+
+.alarm-placeholder,
+.complete-placeholder {
+  width: 24px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+button.alarm {
+  background-color: transparent;
+  border: none;
+  padding: 2px 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: opacity 0.2s;
+}
+
+button.alarm:hover {
+  opacity: 0.7;
+}
+
+button.alarm.alarm-active {
+  opacity: 1;
+}
+
+button.alarm.alarm-inactive {
+  opacity: 0.4;
+}
+
+button.edit {
+  background-color: transparent;
+  border: none;
+  padding: 2px 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: opacity 0.2s;
+}
+
+button.edit:hover {
+  opacity: 0.7;
+}
+
+button.delete {
+  background-color: red;
+  color: white;
+  padding: 3px 6px;
+  font-size: 0.7rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  flex-shrink: 0;
+  width: 50px;
+}
+
+button.delete:hover {
+  background-color: #d43f3a;
+}
+
+button.complete {
+  background-color: #4CAF50;
+  color: white;
+  padding: 3px 6px;
+  font-size: 0.7rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  flex-shrink: 0;
+  width: 70px;
+}
+
+button.complete:hover {
+  background-color: #45a049;
+}
+
+.history-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+button.incomplete {
+  background-color: #2196F3;
+  color: white;
+  padding: 3px 6px;
+  font-size: 0.7rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+button.incomplete:hover {
+  background-color: #1976D2;
+}
+
+.task-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.edit-priority-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.edit-priority-selector label {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.edit-priority-btn {
+  background: transparent;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.edit-priority-btn.active {
+  border-color: #333;
+  background-color: #f0f0f0;
+}
+
+.edit-priority-btn:hover {
+  opacity: 0.8;
+}
+
+.task-edit input[type="text"] {
+  padding: 7px;
+  font-size: 0.85rem;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.edit-priority-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.edit-priority-selector label {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.edit-priority-btn {
+  background: transparent;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.edit-priority-btn.active {
+  border-color: #333;
+  background-color: #f0f0f0;
+}
+
+.edit-priority-btn:hover {
+  opacity: 0.8;
+}
+
+.edit-datetime-wrapper {
+  width: 100%;
+}
+
+.edit-datetime-wrapper .date-time-inputs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.edit-datetime-wrapper .date-input-wrapper {
+  flex: 2;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.edit-datetime-wrapper .date-input-wrapper input[type="text"] {
+  flex: 1;
+  padding-right: 30px;
+}
+
+.edit-datetime-wrapper .date-time-inputs input[type="time"] {
+  flex: 1;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+button.save-edit, button.cancel-edit {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button.save-edit {
+  background-color: #4CAF50;
+  color: white;
+}
+
+button.save-edit:hover {
+  background-color: #45a049;
+}
+
+button.cancel-edit {
+  background-color: #ccc;
+  color: #333;
+}
+
+button.cancel-edit:hover {
+  background-color: #bbb;
+}
